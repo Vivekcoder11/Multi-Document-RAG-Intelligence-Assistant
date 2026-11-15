@@ -1,0 +1,31 @@
+services:
+  # FastAPI RAG Backend
+  - type: web
+    name: rag-intelligence-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.10
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      - key: SECRET_KEY
+        generateValue: true
+      - key: USE_MONGODB
+        value: "false"
+
+  # React TypeScript Frontend
+  - type: web
+    name: rag-intelligence-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
