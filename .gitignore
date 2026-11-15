@@ -1,0 +1,53 @@
+# Environment variables & secrets (CRITICAL: never commit API keys)
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+backend/venv/
+backend/.venv/
+*/venv/
+*/.venv/
+
+# Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.npm
+.eslintcache
+
+# Project storage & user data (uploads & vector DB)
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/data/chroma/
+backend/data/local_store.json
+backend/data/*.log
+*.log
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
